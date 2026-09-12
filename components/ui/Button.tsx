@@ -13,7 +13,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   const baseStyles =
-    "font-semibold rounded transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
+    "font-semibold rounded transition-[transform,box-shadow,opacity] duration-150 ease-out hover:-translate-y-0.5 active:translate-y-0 active:duration-75 motion-reduce:transform-none focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0";
 
   const variantStyles = {
     primary:

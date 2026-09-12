@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { StaggerChildren } from "@/components/shared/Reveal";
 
 const MOMENTOS = [
   { nombre: "Feria de Ciencias", span: "md:col-span-2 md:row-span-2" },
@@ -21,20 +22,23 @@ export function Galeria() {
           La vida en el colegio
         </h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[9rem] gap-3">
+        <StaggerChildren
+          variant="pop"
+          className="grid grid-cols-2 md:grid-cols-4 auto-rows-[9rem] gap-3"
+        >
           {MOMENTOS.map((m) => (
             <button
               key={m.nombre}
               onClick={() => setSelected(m.nombre)}
-              className={`group relative overflow-hidden rounded-xl bg-gradient-to-br from-azul-oscuro to-azul-cielo text-left ${m.span}`}
+              className={`group relative overflow-hidden rounded-xl bg-gradient-to-br from-azul-oscuro to-azul-cielo text-left transition-transform duration-200 ease-out hover:scale-[1.03] motion-reduce:transform-none ${m.span}`}
             >
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <span className="absolute bottom-3 left-4 text-white font-medium text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <span className="absolute bottom-3 left-4 text-white font-medium text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                 {m.nombre}
               </span>
             </button>
           ))}
-        </div>
+        </StaggerChildren>
 
         {selected && (
           <div

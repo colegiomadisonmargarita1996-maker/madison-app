@@ -1,3 +1,5 @@
+import { RevealSection, StaggerChildren } from "@/components/shared/Reveal";
+
 const PILARES = [
   {
     titulo: "Misión",
@@ -20,7 +22,7 @@ export function QuienesSomos() {
   return (
     <section id="quienes-somos" className="py-24 bg-white">
       <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-[0.8fr_1.2fr] gap-12 md:gap-20">
-        <div>
+        <RevealSection>
           <h2 className="font-display font-bold text-3xl md:text-4xl text-ink text-balance">
             Quiénes somos
           </h2>
@@ -28,9 +30,9 @@ export function QuienesSomos() {
             Un colegio en Margarita construyendo, día a día, la educación que
             queremos para nuestros estudiantes.
           </p>
-        </div>
+        </RevealSection>
 
-        <div className="divide-y divide-ink/10 border-t border-ink/10">
+        <StaggerChildren className="divide-y divide-ink/10 border-t border-ink/10">
           {PILARES.map((p) => (
             <div key={p.titulo} className="py-7 grid sm:grid-cols-[8rem_1fr] gap-2 sm:gap-8">
               <h3 className="font-display font-semibold text-xl text-azul-oscuro">
@@ -39,7 +41,7 @@ export function QuienesSomos() {
               <p className="text-ink/70 leading-relaxed">{p.texto}</p>
             </div>
           ))}
-        </div>
+        </StaggerChildren>
       </div>
     </section>
   );

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
+import { RevealSection } from "@/components/shared/Reveal";
 
 const initialForm = {
   nombre: "",
@@ -60,7 +61,7 @@ export function FormularioContacto() {
 
   return (
     <section className="py-24 bg-white">
-      <div className="max-w-2xl mx-auto px-6">
+      <RevealSection className="max-w-2xl mx-auto px-6">
         <h2 className="font-display font-bold text-3xl md:text-4xl text-ink mb-2">
           Solicita información
         </h2>
@@ -171,7 +172,7 @@ export function FormularioContacto() {
             {loading ? "Enviando..." : "Enviar Solicitud"}
           </Button>
         </form>
-      </div>
+      </RevealSection>
     </section>
   );
 }
