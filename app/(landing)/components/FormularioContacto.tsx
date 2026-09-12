@@ -59,15 +59,18 @@ export function FormularioContacto() {
   };
 
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-3xl mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">
-          Solicita Información
+    <section className="py-24 bg-white">
+      <div className="max-w-2xl mx-auto px-6">
+        <h2 className="font-display font-bold text-3xl md:text-4xl text-ink mb-2">
+          Solicita información
         </h2>
+        <p className="text-ink/60 mb-10">
+          Cuéntanos sobre tu hijo o hija y te contactamos en menos de 48 horas.
+        </p>
 
         <form
           onSubmit={handleSubmit}
-          className="bg-gray-50 p-8 rounded-lg border border-gray-200"
+          className="bg-arena p-8 rounded-2xl border border-ink/10"
         >
           <div className="grid md:grid-cols-2 gap-6 mb-6">
             <Input
@@ -96,7 +99,7 @@ export function FormularioContacto() {
               required
             />
             <div className="flex flex-col gap-1">
-              <label className="text-sm font-medium text-gray-700">
+              <label className="text-sm font-medium text-ink/70">
                 Grado de interés
               </label>
               <select
@@ -114,7 +117,7 @@ export function FormularioContacto() {
           </div>
 
           <div className="mb-6">
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-medium text-ink/70">
               Mensaje
             </label>
             <textarea
@@ -138,7 +141,7 @@ export function FormularioContacto() {
               }
               className="mt-1"
             />
-            <label htmlFor="consent" className="text-sm text-gray-600">
+            <label htmlFor="consent" className="text-sm text-ink/60">
               Acepto que mis datos se usen conforme a la{" "}
               <Link href="/privacy" className="text-azul-cielo underline">
                 política de privacidad

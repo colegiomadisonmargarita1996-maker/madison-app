@@ -1,44 +1,44 @@
+const PILARES = [
+  {
+    titulo: "Misión",
+    texto:
+      "Proporcionar educación de excelencia potenciada por tecnología e IA para formar ciudadanos innovadores.",
+  },
+  {
+    titulo: "Visión",
+    texto:
+      "Ser la institución educativa líder en innovación tecnológica y formación integral en la región.",
+  },
+  {
+    titulo: "Valores",
+    texto:
+      "Excelencia, innovación, integridad y compromiso con el desarrollo integral de nuestros estudiantes.",
+  },
+];
+
 export function QuienesSomos() {
   return (
-    <section id="quienes-somos" className="py-20 bg-white">
-      <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">
-          Quiénes Somos
-        </h2>
+    <section id="quienes-somos" className="py-24 bg-white">
+      <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-[0.8fr_1.2fr] gap-12 md:gap-20">
+        <div>
+          <h2 className="font-display font-bold text-3xl md:text-4xl text-ink text-balance">
+            Quiénes somos
+          </h2>
+          <p className="mt-4 text-ink/60 max-w-xs">
+            Un colegio en Margarita construyendo, día a día, la educación que
+            queremos para nuestros estudiantes.
+          </p>
+        </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="text-center">
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl">🎯</span>
+        <div className="divide-y divide-ink/10 border-t border-ink/10">
+          {PILARES.map((p) => (
+            <div key={p.titulo} className="py-7 grid sm:grid-cols-[8rem_1fr] gap-2 sm:gap-8">
+              <h3 className="font-display font-semibold text-xl text-azul-oscuro">
+                {p.titulo}
+              </h3>
+              <p className="text-ink/70 leading-relaxed">{p.texto}</p>
             </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">Misión</h3>
-            <p className="text-gray-600">
-              Proporcionar educación de excelencia potenciada por tecnología e
-              IA para formar ciudadanos innovadores.
-            </p>
-          </div>
-
-          <div className="text-center">
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl">🚀</span>
-            </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">Visión</h3>
-            <p className="text-gray-600">
-              Ser la institución educativa líder en innovación tecnológica y
-              formación integral en la región.
-            </p>
-          </div>
-
-          <div className="text-center">
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl">💎</span>
-            </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">Valores</h3>
-            <p className="text-gray-600">
-              Excelencia, innovación, integridad y compromiso con el
-              desarrollo integral de nuestros estudiantes.
-            </p>
-          </div>
+          ))}
         </div>
       </div>
     </section>

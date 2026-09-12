@@ -1,7 +1,7 @@
 import React from "react";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "accent";
   size?: "sm" | "md" | "lg";
 }
 
@@ -20,6 +20,7 @@ export function Button({
       "bg-azul-oscuro text-white hover:opacity-90 focus:ring-azul-oscuro",
     secondary:
       "bg-azul-cielo text-white hover:opacity-90 focus:ring-azul-cielo",
+    accent: "bg-mango text-white hover:opacity-90 focus:ring-mango",
   };
 
   const sizeStyles = {

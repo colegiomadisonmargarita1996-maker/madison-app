@@ -5,13 +5,15 @@ import Link from "next/link";
 
 export function Navbar() {
   return (
-    <nav className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        <Link href="/" className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-gradient-to-br from-azul-oscuro to-azul-cielo rounded-full flex items-center justify-center text-white font-bold">
+    <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-ink/10">
+      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        <Link href="/" className="flex items-center gap-2.5">
+          <div className="w-9 h-9 bg-azul-oscuro rounded-full flex items-center justify-center text-white font-display font-bold text-sm">
             M
           </div>
-          <span className="text-xl font-bold text-azul-oscuro">Madison</span>
+          <span className="font-display text-lg font-semibold text-ink">
+            Madison
+          </span>
         </Link>
 
         <Link href="/login">
