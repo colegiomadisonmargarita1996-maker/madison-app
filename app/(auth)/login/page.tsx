@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import { loginWithEmail, getCurrentUser, getUserRole, traducirErrorAuth } from "@/lib/auth";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -37,21 +38,24 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white flex items-center justify-center px-4">
+    <div className="min-h-screen bg-arena flex items-center justify-center px-4">
       <div className="w-full max-w-md">
-        <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-azul-oscuro rounded-full flex items-center justify-center mx-auto mb-4 text-white text-2xl font-bold">
-            M
-          </div>
-          <h1 className="text-3xl font-bold text-gray-900">Madison</h1>
-          <p className="text-gray-600 mt-2">Plataforma Educativa</p>
+        <div className="flex justify-center mb-8">
+          <Image
+            src="/images/logo-transparent.png"
+            alt="Colegio Madison Bilingüe"
+            width={1024}
+            height={847}
+            priority
+            className="w-48 h-auto"
+          />
         </div>
 
         <form
           onSubmit={handleLogin}
-          className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm"
+          className="bg-white p-8 rounded-lg border border-ink/10 shadow-sm"
         >
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Ingreso</h2>
+          <h2 className="font-display font-bold text-2xl text-ink mb-6">Ingreso</h2>
 
           {error && (
             <div className="mb-6 p-4 bg-red-100 text-red-800 rounded-lg text-sm">

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/Button";
 import { logoutUser } from "@/lib/auth";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Image from "next/image";
 
 interface DashboardNavbarProps {
   userName: string;
@@ -37,10 +38,16 @@ export function DashboardNavbar({ userName, onMenuClick }: DashboardNavbarProps)
           >
             ☰
           </button>
-          <div className="w-10 h-10 bg-azul-oscuro rounded-full text-white flex items-center justify-center font-bold shrink-0">
-            M
-          </div>
-          <span className="text-lg font-bold text-azul-oscuro">Madison</span>
+          <Image
+            src="/images/logo-icon.png"
+            alt="Colegio Madison"
+            width={144}
+            height={83}
+            className="h-8 w-auto shrink-0"
+          />
+          <span className="font-display text-lg font-semibold text-ink">
+            Madison
+          </span>
         </div>
 
         <div className="flex items-center gap-4">

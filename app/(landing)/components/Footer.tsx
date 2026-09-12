@@ -1,9 +1,18 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export function Footer() {
   return (
     <footer className="bg-ink text-white">
       <div className="max-w-6xl mx-auto px-6 py-14">
+        <Image
+          src="/images/logo-icon.png"
+          alt="Colegio Madison"
+          width={144}
+          height={83}
+          className="h-10 w-auto mb-10"
+        />
+
         <div className="grid md:grid-cols-4 gap-10 mb-10 text-left">
           <div>
             <h4 className="font-display font-semibold mb-4">Contacto</h4>
