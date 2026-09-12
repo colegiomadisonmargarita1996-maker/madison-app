@@ -63,3 +63,26 @@ export async function getUltimoPago(
   if (error) throw error;
   return data;
 }
+
+export async function getEstudiantesConEstadoPago(supabase: SupabaseClient) {
+  const [{ data: estudiantes, error: errEst }, { data: pagos, error: errPagos }] =
+    await Promise.all([
+      supabase.from("estudiantes").select("*").order("nombre"),
+      supabase.from("pagos").select("*").order("created_at", { ascending: false }),
+    ]);
+
+  if (errEst) throw errEst;
+  if (errPagos) throw errPagos;
+
+  const ultimoPagoPorEstudiante = new Map<string, (typeof pagos)[number]>();
+  for (const pago of pagos ?? []) {
+    if (!ultimoPagoPorEstudiante.has(pago.estudiante_id)) {
+      ultimoPagoPorEstudiante.set(pago.estudiante_id, pago);
+    }
+  }
+
+  return (estudiantes ?? []).map((estudiante) => ({
+    estudiante,
+    pago: ultimoPagoPorEstudiante.get(estudiante.id) ?? null,
+  }));
+}
