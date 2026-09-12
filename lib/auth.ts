@@ -35,3 +35,13 @@ export async function getUserRole(userId: string) {
   if (error) throw error;
   return data?.rol;
 }
+
+const MENSAJES_ERROR_AUTH: Record<string, string> = {
+  "Invalid login credentials": "Email o contraseña incorrectos",
+  "Email not confirmed": "Debes confirmar tu email antes de ingresar",
+  "User not found": "No existe una cuenta con ese email",
+};
+
+export function traducirErrorAuth(mensaje: string): string {
+  return MENSAJES_ERROR_AUTH[mensaje] ?? mensaje;
+}

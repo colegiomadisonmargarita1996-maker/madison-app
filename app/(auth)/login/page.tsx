@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
-import { loginWithEmail, getCurrentUser, getUserRole } from "@/lib/auth";
+import { loginWithEmail, getCurrentUser, getUserRole, traducirErrorAuth } from "@/lib/auth";
 import Link from "next/link";
 
 export default function LoginPage() {
@@ -26,7 +26,11 @@ export default function LoginPage() {
       router.push(`/dashboard/${rol}`);
       router.refresh();
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Error al iniciar sesión");
+      setError(
+        err instanceof Error
+          ? traducirErrorAuth(err.message)
+          : "Error al iniciar sesión"
+      );
     } finally {
       setLoading(false);
     }
