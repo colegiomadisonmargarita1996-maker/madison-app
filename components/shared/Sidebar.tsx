@@ -6,6 +6,7 @@ import type { Rol } from "@/types";
 
 interface SidebarProps {
   rol: Rol;
+  onNavigate?: () => void;
 }
 
 const menuItems: Record<Rol, { href: string; label: string; icon: string }[]> = {
@@ -24,17 +25,18 @@ const menuItems: Record<Rol, { href: string; label: string; icon: string }[]> = 
   alumno: [{ href: "/dashboard/alumno", label: "Dashboard", icon: "📊" }],
 };
 
-export function Sidebar({ rol }: SidebarProps) {
+export function Sidebar({ rol, onNavigate }: SidebarProps) {
   const pathname = usePathname();
   const items = menuItems[rol] ?? [];
 
   return (
-    <aside className="w-64 bg-gray-900 text-white h-screen sticky top-0 shrink-0">
+    <aside className="w-64 bg-gray-900 text-white h-screen overflow-y-auto shrink-0">
       <nav className="p-6 space-y-4">
         {items.map((item) => (
           <Link
             key={item.href}
             href={item.href}
+            onClick={onNavigate}
             className={`flex items-center gap-3 px-4 py-2 rounded-lg transition-colors ${
               pathname === item.href ? "bg-azul-oscuro" : "hover:bg-gray-800"
             }`}
