@@ -34,6 +34,20 @@ export async function getCalificacionesByEstudiante(
   return data;
 }
 
+export async function getEstudiantesByGrado(
+  supabase: SupabaseClient,
+  grado: string
+) {
+  const { data, error } = await supabase
+    .from("estudiantes")
+    .select("*")
+    .eq("grado", grado)
+    .order("nombre");
+
+  if (error) throw error;
+  return data;
+}
+
 export async function getUltimoPago(
   supabase: SupabaseClient,
   estudianteId: string

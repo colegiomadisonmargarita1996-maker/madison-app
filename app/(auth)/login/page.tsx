@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
-import { loginWithEmail } from "@/lib/auth";
+import { loginWithEmail, getCurrentUser, getUserRole } from "@/lib/auth";
 import Link from "next/link";
 
 export default function LoginPage() {
@@ -21,7 +21,9 @@ export default function LoginPage() {
 
     try {
       await loginWithEmail(email, password);
-      router.push("/dashboard/padre");
+      const user = await getCurrentUser();
+      const rol = user ? await getUserRole(user.id) : "padre";
+      router.push(`/dashboard/${rol}`);
       router.refresh();
     } catch (err) {
       setError(err instanceof Error ? err.message : "Error al iniciar sesión");
