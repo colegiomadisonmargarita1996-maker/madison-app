@@ -50,6 +50,13 @@ export default async function AdminDashboard() {
             <p className="font-bold text-gray-900">💰 Gestionar Pagos</p>
             <p className="text-sm text-gray-600">Actualizar estado de pagos</p>
           </a>
+          <a
+            href="/dashboard/admin/usuarios"
+            className="p-4 bg-gray-50 border border-gray-200 rounded-lg hover:bg-gray-100 transition"
+          >
+            <p className="font-bold text-gray-900">👤 Gestionar Usuarios</p>
+            <p className="text-sm text-gray-600">Crear cuentas de padres, profesores y admins</p>
+          </a>
         </div>
       </Card>
     </div>
