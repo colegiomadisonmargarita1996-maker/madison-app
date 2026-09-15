@@ -1,17 +1,14 @@
 import { createClient } from "@/lib/supabase/server";
 import { getEstudianteByPadre, getUltimoPago } from "@/lib/db";
+import { requireRole } from "@/lib/roleGuard";
 
 export default async function PadreLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const { user } = await requireRole(["padre"]);
   const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) return null;
 
   const estudiante = await getEstudianteByPadre(supabase, user.id);
 

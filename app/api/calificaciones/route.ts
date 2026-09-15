@@ -8,6 +8,7 @@ const notaSchema = z.object({
   nota: z.number().min(0).max(20),
   comentario: z.string().trim().max(500).optional().or(z.literal("")),
   trimestre: z.enum(["Trimestre I", "Trimestre II", "Trimestre III"]),
+  profesor_id: z.string().uuid().optional(),
 });
 
 const bodySchema = z.object({
@@ -25,6 +26,19 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "No autenticado" }, { status: 401 });
     }
 
+    const { data: perfil } = await supabase
+      .from("users")
+      .select("rol")
+      .eq("id", user.id)
+      .single();
+
+    const esProfesor = perfil?.rol === "profesor";
+    const puedeAsignarProfesor = perfil?.rol === "admin" || perfil?.rol === "control_estudios";
+
+    if (!esProfesor && !puedeAsignarProfesor) {
+      return NextResponse.json({ error: "No tienes permiso" }, { status: 403 });
+    }
+
     const body = await request.json();
     const parsed = bodySchema.safeParse(body);
 
@@ -37,7 +51,10 @@ export async function POST(request: NextRequest) {
 
     const rows = parsed.data.calificaciones.map((c) => ({
       estudiante_id: c.estudiante_id,
-      profesor_id: user.id,
+      // profesor: siempre su propio id (nunca confiar en el cliente).
+      // admin/control_estudios: preservan el profesor_id original al
+      // corregir una nota existente, o su propio id si es una nota nueva.
+      profesor_id: esProfesor ? user.id : c.profesor_id ?? user.id,
       materia: c.materia,
       nota: c.nota,
       comentario: c.comentario || null,

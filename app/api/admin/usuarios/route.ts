@@ -7,7 +7,7 @@ import crypto from "crypto";
 const usuarioSchema = z.object({
   nombre: z.string().trim().min(1, "El nombre es requerido").max(200),
   email: z.string().trim().email("Email inválido"),
-  rol: z.enum(["admin", "profesor", "padre"]),
+  rol: z.enum(["admin", "profesor", "padre", "administrativo", "control_estudios"]),
 });
 
 function generarPasswordTemporal() {

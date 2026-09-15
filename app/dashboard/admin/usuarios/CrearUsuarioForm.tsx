@@ -111,7 +111,9 @@ export function CrearUsuarioForm() {
           >
             <option value="padre">Padre</option>
             <option value="profesor">Profesor</option>
-            <option value="admin">Admin</option>
+            <option value="administrativo">Administrativo</option>
+            <option value="control_estudios">Control de Estudios</option>
+            <option value="admin">Administrador de Sistema</option>
           </select>
         </div>
         <div className="md:col-span-3">

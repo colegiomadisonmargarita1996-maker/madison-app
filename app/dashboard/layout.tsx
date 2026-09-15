@@ -19,9 +19,14 @@ export default async function DashboardLayout({
 
   const { data: perfil } = await supabase
     .from("users")
-    .select("nombre, rol")
+    .select("nombre, rol, estado")
     .eq("id", user.id)
     .single();
+
+  if (perfil?.estado === "inactivo") {
+    await supabase.auth.signOut();
+    redirect("/login");
+  }
 
   const userName = perfil?.nombre ?? user.email ?? "Usuario";
   const rol = perfil?.rol ?? "padre";

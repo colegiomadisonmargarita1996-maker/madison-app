@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
-import { loginWithEmail, getCurrentUser, getUserRole, traducirErrorAuth } from "@/lib/auth";
+import { loginWithEmail, getCurrentUser, getUserPerfil, logoutUser, traducirErrorAuth } from "@/lib/auth";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -23,7 +23,15 @@ export default function LoginPage() {
     try {
       await loginWithEmail(email, password);
       const user = await getCurrentUser();
-      const rol = user ? await getUserRole(user.id) : "padre";
+      const perfil = user ? await getUserPerfil(user.id) : null;
+
+      if (perfil?.estado === "inactivo") {
+        await logoutUser();
+        setError("Esta cuenta está desactivada");
+        return;
+      }
+
+      const rol = perfil?.rol ?? "padre";
       router.push(`/dashboard/${rol}`);
       router.refresh();
     } catch (err) {

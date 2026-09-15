@@ -20,9 +20,18 @@ const menuItems: Record<Rol, { href: string; label: string; icon: string }[]> = 
   ],
   admin: [
     { href: "/dashboard/admin", label: "Dashboard", icon: "📊" },
+    { href: "/dashboard/admin/usuarios", label: "Usuarios", icon: "👥" },
     { href: "/dashboard/admin/pagos", label: "Pagos", icon: "💰" },
+    { href: "/dashboard/control_estudios/notas", label: "Control de Estudios", icon: "📋" },
   ],
-  alumno: [{ href: "/dashboard/alumno", label: "Dashboard", icon: "📊" }],
+  administrativo: [
+    { href: "/dashboard/administrativo", label: "Dashboard", icon: "📊" },
+    { href: "/dashboard/administrativo/pagos", label: "Pagos", icon: "💰" },
+  ],
+  control_estudios: [
+    { href: "/dashboard/control_estudios", label: "Dashboard", icon: "📊" },
+    { href: "/dashboard/control_estudios/notas", label: "Notas", icon: "📝" },
+  ],
 };
 
 export function Sidebar({ rol, onNavigate }: SidebarProps) {

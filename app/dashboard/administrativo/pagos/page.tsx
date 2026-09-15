@@ -2,7 +2,7 @@ import { createClient } from "@/lib/supabase/server";
 import { getEstudiantesConEstadoPago } from "@/lib/db";
 import { GestionarPagosForm } from "@/components/shared/GestionarPagosForm";
 
-export default async function GestionarPagosPage() {
+export default async function AdministrativoPagosPage() {
   const supabase = await createClient();
   const filas = await getEstudiantesConEstadoPago(supabase);
 

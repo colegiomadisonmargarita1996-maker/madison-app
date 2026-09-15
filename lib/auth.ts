@@ -24,16 +24,16 @@ export async function getCurrentUser() {
   return data.user;
 }
 
-export async function getUserRole(userId: string) {
+export async function getUserPerfil(userId: string) {
   const supabase = createClient();
   const { data, error } = await supabase
     .from("users")
-    .select("rol")
+    .select("rol, estado")
     .eq("id", userId)
     .single();
 
   if (error) throw error;
-  return data?.rol;
+  return data;
 }
 
 const MENSAJES_ERROR_AUTH: Record<string, string> = {
